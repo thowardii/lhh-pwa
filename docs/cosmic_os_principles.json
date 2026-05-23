@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Cosmic OS Working Philosophy",
+  "version": "1.0.0",
+  "ratified": "2026-05-23",
+  "description": "Canonical machine-readable schema for the Cosmic OS working philosophy. Optimizes HOW work is done: measure with discipline (frequency), balance trade-offs (polarity), time actions for leverage (resonance), respect maintenance cycles (rhythm), reuse motifs across scales (correspondence), defend structure against drift (negentropy) — all under deterministic, auditable, human-in-the-loop control.",
+
+  "invariants": [
+    "Deterministic execution — Only explicit, versioned tuning JSON affects runtime behavior.",
+    "Fail-open — Optimization must never block business work; last-known or defaults always run.",
+    "Preview-first — Risky actions are preview → explain → apply, with STOP_WRITES available.",
+    "Idempotency required — Duplicate calls must not cause duplicate mutations.",
+    "Audit by default — Every apply and policy change is versioned with actor, reason, and diff.",
+    "Privacy first — No PCI; minimize/redact PII; least privilege on all services."
+  ],
+
+  "principles": [
+    { "id": 1, "principle": "Frequency & Sampling", "rule": "Measure continuously with consistent sampling", "mapsTo": "Vibration/Frequency" },
+    { "id": 2, "principle": "Polarity", "rule": "Treat cost/quality/latency as dials, not binaries", "mapsTo": "Polarity" },
+    { "id": 3, "principle": "Resonance & Timing", "rule": "Cache, pre-warm, right-time execution", "mapsTo": "Resonance" },
+    { "id": 4, "principle": "Rhythm & Cyclicity", "rule": "Sustain cycles of work/recovery", "mapsTo": "Rhythm/Cyclicity" },
+    { "id": 5, "principle": "Correspondence", "rule": "Reuse proven motifs across scales", "mapsTo": "Correspondence" },
+    { "id": 6, "principle": "Negentropy", "rule": "Fight drift with schemas, budgets, ownership", "mapsTo": "Entropy/Negentropy" },
+    { "id": 7, "principle": "Determinism at Apply", "rule": "Only versioned docs change runtime", "mapsTo": "Causation" },
+    { "id": 8, "principle": "Explainability by Default", "rule": "Always show why", "mapsTo": "Causation" },
+    { "id": 9, "principle": "Human-in-the-Loop", "rule": "Auto-mode is earned, not assumed", "mapsTo": "Causation" },
+    { "id": 10, "principle": "Observability Before Autonomy", "rule": "Don't automate what you can't see", "mapsTo": "Causation" },
+    { "id": 11, "principle": "Safety ≫ Speed", "rule": "Guardrails over throughput", "mapsTo": "Polarity" },
+    { "id": 12, "principle": "Vendor-agnostic Core", "rule": "Optimize objectives, not providers", "mapsTo": "Correspondence" },
+    { "id": 13, "principle": "Cost as SLO", "rule": "Treat $ like latency", "mapsTo": "Polarity" }
+  ],
+
+  "antiPrinciples": [
+    "No hidden auto-changes: AI cannot silently mutate runtime behavior.",
+    "No blocking on telemetry: ingest failures never fail business runs.",
+    "No partial schemas: every node must emit the uniform envelope.",
+    "No unbounded retries or parallelism: guard every loop."
+  ],
+
+  "guardrails": {
+    "applyModes": ["recommend_only", "auto_safe", "auto_all_with_labels"],
+    "canary": {
+      "defaultTrafficPercent": 10,
+      "rollbackConditions": {
+        "p95LatencyMs": 800,
+        "errorRatePercent": 2,
+        "costPerRunUsd": 0.5
+      }
+    },
+    "mutationNodes": {
+      "autoDefault": false,
+      "requiredLabels": ["owner_approved", "pilot_org"]
+    }
+  },
+
+  "prReviewChecklist": [
+    "Does this change preserve deterministic execution via versioned tuning?",
+    "Are budgets/guardrails enforced (time, cost, bulk)?",
+    "Is Explain() updated with rationale and expected impact?",
+    "Do new nodes emit the full envelope schema?",
+    "Are fail-open and rollback paths validated?",
+    "Is PII minimized/redacted in new logs/fields?"
+  ]
+}
